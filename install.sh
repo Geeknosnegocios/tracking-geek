@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Tracking Geek — Installer (Mac/Linux)
-# Instala skill /fop-install no Claude Code
+# Instala skill /tracking-geek-install no Claude Code
 
 set -e
 
@@ -17,11 +17,11 @@ echo ""
 
 mkdir -p "$SKILLS_DIR"
 
-echo "▶ Baixando skill fop-install..."
+echo "▶ Baixando skill tracking-geek-install..."
 git clone --depth 1 "$REPO" "$TMP_DIR" 2>&1 | tail -3
 
 echo "▶ Instalando em $SKILLS_DIR..."
-SKILLS=("fop-install")
+SKILLS=("tracking-geek-install")
 for s in "${SKILLS[@]}"; do
   rm -rf "$SKILLS_DIR/$s"
   cp -r "$TMP_DIR/skills/$s" "$SKILLS_DIR/"
@@ -34,11 +34,11 @@ echo ""
 echo "✅ Tracking Geek instalado"
 echo ""
 echo "Reinicie o Claude Code e use:"
-echo "  /fop-install      → Instala FOP em produto lowticket"
+echo "  /tracking-geek-install      → Instala FOP em produto lowticket"
 echo ""
 echo "Scripts CLI também disponíveis:"
-echo "  node $SKILLS_DIR/fop-install/scripts/provision.mjs --help"
-echo "  node $SKILLS_DIR/fop-install/scripts/inject-snippet.mjs --help"
+echo "  node $SKILLS_DIR/tracking-geek-install/scripts/provision.mjs --help"
+echo "  node $SKILLS_DIR/tracking-geek-install/scripts/inject-snippet.mjs --help"
 echo ""
 echo "Pré-requisitos:"
 echo "  • Token Supabase MetricaGeek em ~/.claude/.env"

@@ -1,9 +1,9 @@
 ---
-name: fop-install
-description: Instala FOP (Funil de Otimização do Pixel) em produto lowticket novo. Cria workspace MetricaGeek + Meta integration + configura pixel + injeta GeekPixel.js em todos HTMLs do projeto + configura PerfectPay/Cakto webhook. Use quando user disser "instalar FOP", "configurar tracking", "subir pixel", "adicionar produto ao MetricaGeek", "instalar GeekPixel", "ativar Match Quality 9", ou após criar novo produto lowticket.
+name: tracking-geek-install
+description: Instala Tracking Geek (FOP — Funil de Otimização do Pixel) em produto lowticket novo. Cria workspace MetricaGeek + Meta integration + configura pixel + injeta GeekPixel.js em todos HTMLs do projeto + configura PerfectPay/Cakto webhook. Use quando user disser "instalar tracking geek", "instalar FOP", "configurar tracking", "subir pixel", "adicionar produto ao MetricaGeek", "instalar GeekPixel", "ativar Match Quality 9", ou após criar novo produto lowticket.
 ---
 
-# /fop-install — Pipeline FOP pra produtos lowticket
+# /tracking-geek-install — Pipeline FOP pra produtos lowticket
 
 ## O que é
 
@@ -65,11 +65,11 @@ Claude faz:
 
 ## Script de provisioning
 
-Arquivo: `~/.claude/skills/fop-install/scripts/provision.mjs`
+Arquivo: `~/.claude/skills/tracking-geek-install/scripts/provision.mjs`
 
 Invocar:
 ```bash
-node ~/.claude/skills/fop-install/scripts/provision.mjs \
+node ~/.claude/skills/tracking-geek-install/scripts/provision.mjs \
   --name "Copa Milionária" \
   --slug copa-milionaria \
   --pixel-id 1234567890123 \
@@ -97,13 +97,13 @@ Output:
       • Página de obrigado: https://<domain>/obrigado?transaction_token={transaction_token}
 
    3. Comando pra auto-injetar nos HTMLs:
-      node ~/.claude/skills/fop-install/scripts/inject-snippet.mjs \
+      node ~/.claude/skills/tracking-geek-install/scripts/inject-snippet.mjs \
         --path /path/to/project --slug copa-milionaria
 ```
 
 ## Script de injeção HTML
 
-Arquivo: `~/.claude/skills/fop-install/scripts/inject-snippet.mjs`
+Arquivo: `~/.claude/skills/tracking-geek-install/scripts/inject-snippet.mjs`
 
 Faz:
 - Varre `*.html` no diretório (recursivo, ignora `node_modules`, `dist`, `.next`)
@@ -115,7 +115,7 @@ Faz:
 
 Invocar:
 ```bash
-node ~/.claude/skills/fop-install/scripts/inject-snippet.mjs \
+node ~/.claude/skills/tracking-geek-install/scripts/inject-snippet.mjs \
   --path "C:/Users/freit/Documents/CopaMilionaria" \
   --slug copa-milionaria \
   --commit  # opcional: faz git add + commit + push

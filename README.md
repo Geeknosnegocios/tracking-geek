@@ -44,13 +44,13 @@ Output esperado:
 ║  Tracking Geek — Funil de Otimização do Pixel    ║
 ║  Match Quality 9+ · Pixel + CAPI · Multi-canal   ║
 ╚══════════════════════════════════════════════════╝
-✓ fop-install
+✓ tracking-geek-install
 ✅ Tracking Geek instalado
 ```
 
 ### Passo 2 — Reiniciar Claude Code
 
-Fecha + abre Claude Code. Skill `/fop-install` aparece no autocomplete.
+Fecha + abre Claude Code. Skill `/tracking-geek-install` aparece no autocomplete.
 
 ### Passo 3 — Criar conta MetricaGeek (grátis)
 
@@ -77,7 +77,7 @@ META_AD_ACCOUNT_ID=act_1234567890123
 No Claude Code:
 
 ```
-/fop-install
+/tracking-geek-install
 ```
 
 Responde as perguntas:
@@ -273,13 +273,13 @@ PerfectPay V1+V2 · Cakto · Hotmart · Kiwify · Eduzz · Monetizze · Lastlink
 
 | Skill | Comando | O que faz |
 |---|---|---|
-| **fop-install** | `/fop-install` | Provisiona FOP em produto lowticket: workspace MetricaGeek + Meta integration + webhook + GeekPixel.js auto-injetado |
+| **tracking-geek-install** | `/tracking-geek-install` | Provisiona FOP em produto lowticket: workspace MetricaGeek + Meta integration + webhook + GeekPixel.js auto-injetado |
 
 ### Scripts CLI (sem Claude)
 
 ```bash
 # Provisiona workspace + Meta integration
-node ~/.claude/skills/fop-install/scripts/provision.mjs \
+node ~/.claude/skills/tracking-geek-install/scripts/provision.mjs \
   --name "Produto X" \
   --slug produto-x \
   --pixel-id 1234567890123 \
@@ -287,7 +287,7 @@ node ~/.claude/skills/fop-install/scripts/provision.mjs \
   --ad-account act_1234567890123
 
 # Injeta snippet em todos HTMLs (substitui pixel inline antigo)
-node ~/.claude/skills/fop-install/scripts/inject-snippet.mjs \
+node ~/.claude/skills/tracking-geek-install/scripts/inject-snippet.mjs \
   --path /path/to/projeto \
   --slug produto-x \
   --firstparty \

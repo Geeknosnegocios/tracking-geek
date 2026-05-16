@@ -1,5 +1,5 @@
 # Tracking Geek — Installer (Windows PowerShell)
-# Instala skill /fop-install no Claude Code
+# Instala skill /tracking-geek-install no Claude Code
 
 $ErrorActionPreference = "Stop"
 
@@ -16,11 +16,11 @@ Write-Host ""
 
 New-Item -ItemType Directory -Force -Path $SkillsDir | Out-Null
 
-Write-Host "▶ Baixando skill fop-install..." -ForegroundColor Yellow
+Write-Host "▶ Baixando skill tracking-geek-install..." -ForegroundColor Yellow
 git clone --depth 1 $Repo $TmpDir 2>&1 | Select-Object -Last 3
 
 Write-Host "▶ Instalando em $SkillsDir..." -ForegroundColor Yellow
-$Skills = @("fop-install")
+$Skills = @("tracking-geek-install")
 foreach ($s in $Skills) {
   $dest = Join-Path $SkillsDir $s
   if (Test-Path $dest) { Remove-Item -Recurse -Force $dest }
@@ -34,11 +34,11 @@ Write-Host ""
 Write-Host "✅ Tracking Geek instalado" -ForegroundColor Green
 Write-Host ""
 Write-Host "Reinicie o Claude Code e use:"
-Write-Host "  /fop-install      → Instala FOP em produto lowticket"
+Write-Host "  /tracking-geek-install      → Instala FOP em produto lowticket"
 Write-Host ""
 Write-Host "Scripts CLI também disponíveis:"
-Write-Host "  node $SkillsDir\fop-install\scripts\provision.mjs --help"
-Write-Host "  node $SkillsDir\fop-install\scripts\inject-snippet.mjs --help"
+Write-Host "  node $SkillsDir\tracking-geek-install\scripts\provision.mjs --help"
+Write-Host "  node $SkillsDir\tracking-geek-install\scripts\inject-snippet.mjs --help"
 Write-Host ""
 Write-Host "Pré-requisitos:"
 Write-Host "  • Token Supabase MetricaGeek em ~/.claude/.env"
