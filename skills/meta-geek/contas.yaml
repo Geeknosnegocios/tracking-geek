@@ -1,0 +1,31 @@
+# ============================================================================
+# Meta Geek — Cadastro de Contas
+# ============================================================================
+# Template — copia + preenche pra cada cliente/produto que tu gerencia.
+# Path: ~/.claude/skills/meta-geek/contas.yaml
+# ============================================================================
+
+clientes:
+
+  # ─────────────────────────────────────────────────────────────────────────
+  # EXEMPLO — comenta/remove e adiciona seus clientes reais
+  # ─────────────────────────────────────────────────────────────────────────
+  exemplo-cliente:
+    nome: "Nome do Cliente"
+    conta_anuncio: "act_1234567890123"    # Business Manager → Accounts → ID
+    pagina_facebook: "1234567890123"      # Page ID Facebook
+    instagram_id: "17841400000000000"     # Instagram Business Account ID
+    instagram_username: "@usuario"
+    moeda: "BRL"
+    business_manager: "1234567890123"     # opcional — BM ID
+    app_id: "1234567890123"               # opcional — Meta App ID custom
+    app_name: "Nome do App"               # opcional
+    notas: "Notas livres sobre essa conta"
+
+# ============================================================================
+# Como usar:
+# - /meta-geek listar contas         → mostra todas
+# - /meta-geek campanhas <cliente>   → puxa campanhas
+# - /meta-geek criar campanha <cliente> --produto X --budget 30
+# - /meta-geek insights <cliente> --days 7
+# ============================================================================
