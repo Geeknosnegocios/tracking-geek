@@ -45,12 +45,13 @@ Output esperado:
 ║  Match Quality 9+ · Pixel + CAPI · Multi-canal   ║
 ╚══════════════════════════════════════════════════╝
 ✓ tracking-geek-install
+✓ meta-geek
 ✅ Tracking Geek instalado
 ```
 
 ### Passo 2 — Reiniciar Claude Code
 
-Fecha + abre Claude Code. Skill `/tracking-geek-install` aparece no autocomplete.
+Fecha + abre Claude Code. Skills `/tracking-geek-install` e `/meta-geek` aparecem no autocomplete.
 
 ### Passo 3 — Criar conta MetricaGeek (grátis)
 
@@ -274,6 +275,7 @@ PerfectPay V1+V2 · Cakto · Hotmart · Kiwify · Eduzz · Monetizze · Lastlink
 | Skill | Comando | O que faz |
 |---|---|---|
 | **tracking-geek-install** | `/tracking-geek-install` | Provisiona FOP em produto lowticket: workspace MetricaGeek + Meta integration + webhook + GeekPixel.js auto-injetado |
+| **meta-geek** | `/meta-geek` | Gerencia campanhas Facebook/Instagram Ads via SDK oficial. Lê campanhas, conjuntos, anúncios, criativos e insights. Cria, edita, pausa, duplica e deleta objetos. Busca interesses, comportamentos e geolocalizações para targeting. Troca url_tags em criativos existentes. |
 
 ### Scripts CLI (sem Claude)
 
@@ -292,6 +294,43 @@ node ~/.claude/skills/tracking-geek-install/scripts/inject-snippet.mjs \
   --slug produto-x \
   --firstparty \
   --commit
+```
+
+### Meta Geek — gestão Facebook Ads
+
+```bash
+# Lista campanhas de uma conta
+python ~/.claude/skills/meta-geek/scripts/read.py campaigns --account act_123
+
+# Insights última semana
+python ~/.claude/skills/meta-geek/scripts/insights.py account --id act_123 --date-preset last_7d
+
+# Pausa campanha
+python ~/.claude/skills/meta-geek/scripts/update.py campaign --id 123 --status PAUSED
+
+# Cria campanha PAUSED (sempre cria pausado por segurança)
+python ~/.claude/skills/meta-geek/scripts/create.py campaign --account act_123 \
+  --name "LEADS-Teste" --objective OUTCOME_LEADS
+
+# Troca url_tags de ad existente (sem precisar recriar)
+python ~/.claude/skills/meta-geek/scripts/advanced.py swap-url-tags --ad 123 \
+  --url-tags "utm_source=facebook&utm_medium=cpc&utm_campaign=NOME"
+```
+
+Setup pré-requisito (1×):
+```bash
+# 1. Edita contas
+nano ~/.claude/skills/meta-geek/contas.yaml
+
+# 2. Cria .env (token Meta Ads + App ID)
+cat > ~/.claude/skills/meta-geek/.env <<EOF
+META_ADS_TOKEN=EAAVxxxxxxxxxxxxxx
+META_APP_ID=1234567890123
+META_AD_ACCOUNT_ID=act_1234567890123
+EOF
+
+# 3. Instala SDK Python
+pip install facebook-business
 ```
 
 ---
